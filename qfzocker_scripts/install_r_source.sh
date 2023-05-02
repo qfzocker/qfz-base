@@ -39,6 +39,7 @@ fi
 apt-get install -y --no-install-recommends \
     bash-completion \
     ca-certificates \
+    curl \
     file \
     fonts-texgyre \
     g++ \
@@ -47,6 +48,8 @@ apt-get install -y --no-install-recommends \
     libblas-dev \
     libbz2-* \
     libcurl4 \
+    libcurl4-openssl-dev \
+    libgit2-dev \
     "libicu[0-9][0-9]" \
     liblapack-dev \
     libpcre2* \
@@ -54,20 +57,22 @@ apt-get install -y --no-install-recommends \
     libpangocairo-* \
     libpng16* \
     "libreadline${READLINE_VERSION}" \
+    libssl-dev \
     libtiff* \
     liblzma* \
     make \
+    perl \
     tzdata \
-    unzip \
+    unzip  \
+    wget \
     zip \
-    zlib1g
+    zlib1g \
+    zlib1g-dev
 
-BUILDDEPS="curl \
-    default-jdk \
+BUILDDEPS="default-jdk \
     devscripts \
     libbz2-dev \
     libcairo2-dev \
-    libcurl4-openssl-dev \
     libpango1.0-dev \
     libjpeg-dev \
     libicu-dev \
@@ -78,7 +83,6 @@ BUILDDEPS="curl \
     liblzma-dev \
     libx11-dev \
     libxt-dev \
-    perl \
     rsync \
     subversion \
     tcl-dev \
@@ -92,9 +96,7 @@ BUILDDEPS="curl \
     x11proto-core-dev \
     xauth \
     xfonts-base \
-    xvfb \
-    wget \
-    zlib1g-dev"
+    xvfb"
 
 # shellcheck disable=SC2086
 apt-get install -y --no-install-recommends ${BUILDDEPS}
@@ -150,6 +152,9 @@ chmod g+ws "${R_HOME}/site-library"
 
 ## Fix library path
 echo "R_LIBS=\${R_LIBS-'${R_HOME}/site-library:${R_HOME}/library'}" >>"${R_HOME}/etc/Renviron.site"
+
+## Install littler
+R -q -e "install.packages(\"littler\", repo=\"https://cran.rstudio.com\")"
 
 ## Clean up from R source install
 cd ..
