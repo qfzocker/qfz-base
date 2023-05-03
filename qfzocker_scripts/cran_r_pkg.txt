@@ -1,0 +1,9 @@
+tidyverse
+rmarkdown
+knitr
+tinytex
+bookdown
+shiny
+devtools
+usethis
+remotes

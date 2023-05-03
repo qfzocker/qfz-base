@@ -175,9 +175,13 @@ apt-get autoremove -y
 apt-get autoclean -y
 rm -rf /var/lib/apt/lists/*
 
+# Install CRAN Packages
+if [[ -f $CRANPKG ]];then
+  echo " * Install CRAN packages ..."
+  install2.r -r $CRAN $(cat $CRANPKG | sed -z "s/\n/ /g")
+fi
+
 # Check the R info
 echo -e "Check the R info...\n"
-
 R -q -e "sessionInfo()"
-
 echo -e "\nInstall R from source, done!"
