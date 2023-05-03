@@ -18,5 +18,5 @@ ENV CRANPKG=/qfzocker_scripts/cran_r_pkg.txt
 ADD qfzocker_scripts /qfzocker_scripts
 
 # run installation script
-RUN /qfzocker_scripts/install_qfz_base.sh
+RUN /qfzocker_scripts/install_qfz_app.sh
 
