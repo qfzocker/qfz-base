@@ -154,7 +154,9 @@ chmod g+ws "${R_HOME}/site-library"
 echo "R_LIBS=\${R_LIBS-'${R_HOME}/site-library:${R_HOME}/library'}" >>"${R_HOME}/etc/Renviron.site"
 
 ## Install littler
-R -q -e "install.packages(\"littler\", repo=\"https://cran.rstudio.com\")"
+R -q -e "install.packages(\"littler\", dependencies=TRUE, repo=\"https://cran.rstudio.com\")"
+ln -s /usr/local/lib/R/site-library/littler/bin/r /usr/local/bin/r
+ln -s /usr/local/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r
 
 ## Clean up from R source install
 cd ..
