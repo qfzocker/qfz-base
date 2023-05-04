@@ -13,3 +13,14 @@ if [[ -f $INSTPYPKG ]];then
   $INSTPYPKG
 fi
 
+# install Julia
+if [[ -f $INSTJULIA ]];then
+  echo " * Running $INSTJULIA ..."
+  $INSTJULIA
+fi
+
+# install openjdk
+if [[ -f $INSTOPENJDK ]];then
+  echo " * Running $INSTOPENJDK ..."
+  $INSTOPENJDK
+fi

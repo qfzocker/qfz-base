@@ -4,6 +4,7 @@ set -e
 apt-get update
 
 # install python packages
+echo " * Install python3 pkg ..."
 apt-get install -y --no-install-recommends \
     python3 \
     python3-pip \
