@@ -5,18 +5,20 @@ apt-get update
 
 # install python packages
 apt-get install -y --no-install-recommends \
-    python \
-    python-pip \
-    python-numpy \
-    python-pandas \
-    python-dev \
-    python3-pip
+    python3 \
+    python3-pip \
+    python3.11-venv \
+    python3.11-doc \
+    binfmt-support
+
+# make 3.11 the default
+update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 
 # install python modules
-/usr/bin/pip3 install pandas
-/usr/bin/pip3 install numpy
-/usr/bin/pip3 install xlrd
-/usr/bin/pip3 install openpyxl
-/usr/bin/pip3 install sympy
-/usr/bin/pip3 install matplotlib
-/usr/bin/pip3 install seaborn
+if [[ -f $PIPPYMOD ]];then
+  echo " * Pip Install Modules ..."
+  for m in $(cat $PIPPYMOD);do
+    echo " ** Install $m ..."
+    /usr/bin/pip3 install $m
+  done
+fi

@@ -14,6 +14,7 @@ ENV TZ=Europe/Berlin
 ENV INSTRSRC=/qfzocker_scripts/install_r_source.sh
 ENV CRANPKG=/qfzocker_scripts/cran_r_pkg.txt
 ENV INSTPYPKG=/qfzocker_scripts/install_pip_py.sh
+ENV PIPPYMOD=/qfzocker_scripts/pip_py_mod.txt
 
 # add directory with installation scripts to docker container
 ADD qfzocker_scripts /qfzocker_scripts
